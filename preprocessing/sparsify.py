@@ -24,8 +24,7 @@ def to_sparse(col, dtype='str', vocab_size=None, vocab_only=False):
 
 # Reading in the data
 slim_cols = [COLUMNS_TO_USE]
-records = pd.read_csv('~/data/syndromic/good_cc_records.csv',
-                      usecols=slim_cols)
+records = pd.read_csv(EHR_CSV_FILE, usecols=slim_cols)
 
 # Making the sparse matrices
 sparse_out = [to_sparse(records[col].astype(str)) for col in slim_cols]
