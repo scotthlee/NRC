@@ -23,14 +23,9 @@ def to_sparse(col, dtype='str', vocab_size=None, vocab_only=False):
     return {'data':data, 'vocab':vocab}
 
 # Reading in the data
-slim_cols = ['age', 'gender', 'moa', 'year', 'month',
-                    'dispo', 'hospcode', 'ccs']
+slim_cols = [COLUMNS_TO_USE]
 records = pd.read_csv('~/data/syndromic/good_cc_records.csv',
                       usecols=slim_cols)
-
-# Weeding out records from hospital 15, which has garbage CCs
-not_hosp15 = np.where(records['hospcode'] != 15)[0]
-records = records.iloc[not_hosp15, :]
 
 # Making the sparse matrices
 sparse_out = [to_sparse(records[col].astype(str)) for col in slim_cols]
@@ -40,5 +35,5 @@ sparse_vocab = pd.Series([item for sublist in sparse_vocab
                           for item in sublist])
 
 # Writing the files to disk
-save_npz('data/sparse_records_no15', sparse_csr)
-sparse_vocab.to_csv('data/sparse_vocab.csv', index=False)
+save_npz('sparse_records', sparse_csr)
+sparse_vocab.to_csv('sparse_vocab.csv', index=False)
