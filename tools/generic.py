@@ -2,12 +2,9 @@ import numpy as np
 import pandas as pd
 
 from sys import getsizeof
-from scipy.sparse import csr_matrix
 from sklearn.utils import shuffle
 from sklearn.metrics import recall_score, precision_score
 from sklearn.metrics import accuracy_score, f1_score
-from gensim.models.doc2vec import TaggedDocument
-from sklearn.feature_extraction.text import CountVectorizer
 
 # Gets the number of batches given a batch size and a dataset
 def n_batches(n, batch_size):
