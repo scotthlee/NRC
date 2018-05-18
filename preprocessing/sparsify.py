@@ -1,26 +1,8 @@
 import pandas as pd
 import numpy as np
 
-from sklearn.feature_extraction.text import CountVectorizer
-from scipy.sparse import hstack, save_npz, csr_matrix
-
 from tools.generic import gigs, one_hot, to_sparse
 from tools.text import remove_nan, remove_special
-
-# Just a few functions to support making a sparse array
-def to_sparse(col, dtype='str', vocab_size=None, vocab_only=False):
-    if dtype=='str':
-        vec = CountVectorizer(binary=True,
-                              ngram_range=(1, 1),
-                              token_pattern="(?u)\\b\\w+\\b")
-        data = vec.fit_transform(col)
-        vocab = sorted(vec.vocabulary_.keys())
-        if vocab_only:
-            return vocab
-    else:
-        data = csr_matrix(one_hot(col, vocab_size)).transpose()
-        vocab = np.unique(col)
-    return {'data':data, 'vocab':vocab}
 
 # Reading in the data
 slim_cols = [COLUMNS_TO_USE]
