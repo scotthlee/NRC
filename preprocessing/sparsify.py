@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from scipy.sparse import hstack, save_npz, csr_matrix
 
-from tools.generic import gigs, one_hot
+from tools.generic import gigs, one_hot, to_sparse
 from tools.text import remove_nan, remove_special
 
 # Just a few functions to support making a sparse array

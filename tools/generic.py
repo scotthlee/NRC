@@ -5,6 +5,8 @@ from sys import getsizeof
 from sklearn.utils import shuffle
 from sklearn.metrics import recall_score, precision_score
 from sklearn.metrics import accuracy_score, f1_score
+from sklearn.feature_extraction.text import CountVectorizer
+from scipy.sparse import csr_matrix
 
 # Gets the number of batches given a batch size and a dataset
 def n_batches(n, batch_size):
@@ -43,6 +45,22 @@ def densify(mat, axis=2, flatten=False):
     if flatten:
         out = out.flatten()
     return out
+    
+# Makes a sparse array out of data frame of discrete variables
+def to_sparse(col, dtype='str', vocab_size=None, vocab_only=False):
+    if dtype=='str':
+        vec = CountVectorizer(binary=True,
+                              ngram_range=(1, 1),
+                              token_pattern="(?u)\\b\\w+\\b")
+        data = vec.fit_transform(col)
+        vocab = sorted(vec.vocabulary_.keys())
+        if vocab_only:
+            return vocab
+    else:
+        data = csr_matrix(one_hot(col, vocab_size)).transpose()
+        vocab = np.unique(col)
+    return {'data':data, 'vocab':vocab}
+
 
 # Runs basic diagnostic stats on binary predictions
 def diagnostics(true, pred, average='weighted'):
