@@ -16,5 +16,5 @@ sparse_vocab = pd.Series([item for sublist in sparse_vocab
                           for item in sublist])
 
 # Writing the files to disk
-save_npz('sparse_records', sparse_csr)
+save_npz('sparse_records.npz', sparse_csr)
 sparse_vocab.to_csv('sparse_vocab.csv', index=False)
