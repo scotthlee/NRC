@@ -19,4 +19,8 @@ This repository contains code from the paper "Natural Language Generation for El
   1. Keras with the TensorFlow backend
   3. Pandas, NumPy, h5py, and scikit-learn
 
- 
+## hot tips
+The default hyperparameters worked well for the data used in our paper, but they might not for yours, so feel free to experiment! Also,
+a GPU is strongly recommended for training the captioning model. We used a single NVIDIA Titan X for our experiments, and training
+time on ~2 million records took around 6 hours.
+
