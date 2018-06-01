@@ -55,5 +55,8 @@ nrc = NRC(embedding_size=embedding_size,
 # Loading the training model and building the inference model
 nrc.load_training_model('nrc_training.hdf5')
 
+# Picking random records to caption
+to_caption = np.random.chocie(0, test_recs.shape[0], 100)
+
 # Running some test captions
-nrc.caption(test_recs[0], vocab, method='beam')
+nrc.caption(test_recs[to_caption], vocab, method='beam')
