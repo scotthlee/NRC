@@ -38,7 +38,7 @@ def cider(ref, test, vecs=None, n=4):
     stat = np.mean([1 - cosine(tests[i], refs[i]) for i in to_use])
     return stat
 
-def embedding_cider(ref, test, vocab, method='average', idf=None):
+def embedding_similarity(ref, test, vocab, method='average', idf=None):
     '''
     Calculates the CIDEr metric using dense vector representations
     of words as input instead of tf-idf vectors.
