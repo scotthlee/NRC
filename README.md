@@ -1,5 +1,5 @@
 # Neural Record Captioning (NRC)
-This repository contains code from the paper "Natural Language Generation for Electronic Health Records with Deep Learning" [link here].
+This repository contains code from the paper "Natural Language Generation for Electronic Health Records" [link here].
 
 ## what's included
   1. Keras code for the NRC model.
