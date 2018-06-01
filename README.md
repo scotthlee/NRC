@@ -6,7 +6,7 @@ This repository contains code from the paper "Natural Language Generation for El
   2. Training and testing scripts for the model.
   3. Example scripts for preprocessing EHR data to be used in the model.
 
-## how to get started
+## getting started
   1. Install the necessary Python modules (list below)
   2. Use `preprocessing/sparisfy.py` to convert the discrete variables in your EHRs to sparse format
   3. Use `preprocessing/words_to_integers.py` to conver your free text field to integers
