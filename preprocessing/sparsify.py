@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 
 from tools.generic import gigs, one_hot, to_sparse
-from tools.text import remove_nan, remove_special
 
 # Reading in the data
 slim_cols = [COLUMNS_TO_USE]
