@@ -7,7 +7,6 @@ import string
 from nltk.tokenize import TreebankWordTokenizer
 from sklearn.feature_extraction.text import CountVectorizer
 
-
 # Looks up a dict key up by its values
 def get_key(value, dic, add_1=False, pad=0):
     if add_1 and value != pad:
