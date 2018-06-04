@@ -13,7 +13,7 @@ def n_batches(n, batch_size):
     return int((n / batch_size) + (n % batch_size))
 
 # Generator function for use with the NRC model;
-# Pulled from StackOverflow because I'm lazy.
+# Original version obtained from StackOverflow.
 def nrc_generator(recs, sents, y, batch_size=256, vocab_size=39):
     n = len(y)
     n_batches = int((n / batch_size) + (n % batch_size))
