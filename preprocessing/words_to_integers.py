@@ -16,7 +16,7 @@ import tools.generic as tg
 # Importing the text files
 records = pd.read_csv(EHR_CSV_FILE)
 
-# Prepping the chief complaint column
+# Prepping the text column
 text = records[TEXT_COL_NAME]
 text = ['start_string ' + doc + ' end_string' for doc in text]
 text_series = pd.Series(text)
@@ -40,14 +40,14 @@ vocab_df['word'] = vocab_df.index
 vocab_df.columns = ['value', 'word']
 vocab_df.to_csv('data/word_dict.csv', index=False)
 
-# Converting the text strings to sequences of integers
+# Weeding out docs longer than max_length (18 is the default)
 max_length = 18
 doc_lengths = np.array([len(doc.split()) for doc in ten_text])
 clip_where = np.where(doc_lengths <= max_length)[0]
 clipped_docs = ten_text.iloc[clip_where]
 
 # Weeding out docs with tokens that CountVectorizer doesn't recognize;
-# this shouldn't be necessary, but I can't figure out how to debug it.
+# mostly a redundancy check for funky characters.
 in_vocab = np.where([np.all([word in vocab.keys()
                              for word in doc.split()])
                      for doc in clipped_docs])
