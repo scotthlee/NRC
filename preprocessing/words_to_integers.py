@@ -40,9 +40,6 @@ vocab_df['word'] = vocab_df.index
 vocab_df.columns = ['value', 'word']
 vocab_df.to_csv('data/word_dict.csv', index=False)
 
-# Remembering the value for the end-of-sequence token
-eos_val = vocab['end_string']
-
 # Converting the text strings to sequences of integers
 max_length = 18
 doc_lengths = np.array([len(doc.split()) for doc in ten_text])
